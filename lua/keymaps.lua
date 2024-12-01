@@ -45,6 +45,15 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Split window management (https://github.com/bcampolo/nvim-starter-kit/blob/python/.config/nvim/lua/core/keymaps.lua)vim.keymap.set('n', '<leader>sv', '<C-w>v', { desc = 'Split window vertically' })
+vim.keymap.set('n', '<leader>sh', '<C-w>s', { desc = 'Split window horizontally' })
+vim.keymap.set('n', '<leader>se', '<C-w>=', { desc = 'Equal window widths' })
+vim.keymap.set('n', '<leader>sx', ':close<CR>', { desc = 'Close split window' })
+vim.keymap.set('n', '<leader>sj', '<C-w>-', { desc = 'Increase height' })
+vim.keymap.set('n', '<leader>sk', '<C-w>+', { desc = 'Decrease height' })
+vim.keymap.set('n', '<leader>sl', '<C-w>>5', { desc = 'Increase width' })
+vim.keymap.set('n', '<leader>sh', '<C-w><5', { desc = 'Decrease width' })
+
 -- Yank file name
 vim.keymap.set('n', '<leader>yfn', function()
   local filename = vim.fn.expand('%:t:r')
