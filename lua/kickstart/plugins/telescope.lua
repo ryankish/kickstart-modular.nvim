@@ -110,6 +110,14 @@ return {
       end, { desc = '[F]ind [N]eovim files' })
 
       vim.keymap.set('n', '<leader>ft', ':TodoTelescope<CR>', { noremap = true, silent = true, desc = '[F]ind [T]odos' })
+
+      vim.keymap.set('n', '<leader>fb', function()
+        require('telescope.builtin').current_buffer_fuzzy_find {
+          prompt_title = 'Current Buffer Fuzzy Search',
+          previewer = true,
+        }
+      end, { desc = '[F]ind in [B]uffer' })
+
     end,
   },
 }
