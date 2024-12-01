@@ -76,4 +76,6 @@ vim.keymap.set('n', '<leader>yfp', function()
   vim.notify('Yanked file path: ' .. filepath)
 end, { desc = 'Yank file path' })
 
+vim.keymap.set('n', '<leader>e', ':Neotree toggle<CR>', { desc = 'Toggle Neo-tree' })
+
 -- vim: ts=2 sts=2 sw=2 et
