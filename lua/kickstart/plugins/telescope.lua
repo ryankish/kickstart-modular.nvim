@@ -108,6 +108,8 @@ return {
       vim.keymap.set('n', '<leader>fn', function()
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
       end, { desc = '[F]ind [N]eovim files' })
+
+      vim.keymap.set('n', '<leader>ft', ':TodoTelescope<CR>', { noremap = true, silent = true, desc = '[F]ind [T]odos' })
     end,
   },
 }
