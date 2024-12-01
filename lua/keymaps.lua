@@ -46,6 +46,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- Split window management (https://github.com/bcampolo/nvim-starter-kit/blob/python/.config/nvim/lua/core/keymaps.lua)vim.keymap.set('n', '<leader>sv', '<C-w>v', { desc = 'Split window vertically' })
+vim.keymap.set('n', '<leader>sv', '<C-w>v', { desc = 'Split window vertically' })
 vim.keymap.set('n', '<leader>sh', '<C-w>s', { desc = 'Split window horizontally' })
 vim.keymap.set('n', '<leader>se', '<C-w>=', { desc = 'Equal window widths' })
 vim.keymap.set('n', '<leader>sx', ':close<CR>', { desc = 'Close split window' })
@@ -56,21 +57,21 @@ vim.keymap.set('n', '<leader>sh', '<C-w><5', { desc = 'Decrease width' })
 
 -- Yank file name
 vim.keymap.set('n', '<leader>yfn', function()
-  local filename = vim.fn.expand('%:t:r')
+  local filename = vim.fn.expand '%:t:r'
   vim.fn.setreg('+', filename)
   vim.notify('Yanked file name without extension: ' .. filename)
 end, { desc = 'Yank file name without extension' })
 
 -- Yank file name with extension
 vim.keymap.set('n', '<leader>yfe', function()
-  local filename = vim.fn.expand('%:t')
+  local filename = vim.fn.expand '%:t'
   vim.fn.setreg('+', filename)
   vim.notify('Yanked file name with extension: ' .. filename)
 end, { desc = 'Yank file name with extension' })
 
 -- Yank file relative path
 vim.keymap.set('n', '<leader>yfp', function()
-  local filepath = vim.fn.expand('%')
+  local filepath = vim.fn.expand '%'
   vim.fn.setreg('+', filepath)
   vim.notify('Yanked file path: ' .. filepath)
 end, { desc = 'Yank file path' })
