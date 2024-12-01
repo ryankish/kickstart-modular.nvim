@@ -67,7 +67,8 @@ require('lazy').setup({
 
 
   -- Custom plugins
-  require 'custom.plugins.kanagawa'
+  require 'custom.plugins.kanagawa',
+  require 'custom.plugins.neogit',
 
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
