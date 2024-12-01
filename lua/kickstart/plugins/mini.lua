@@ -17,6 +17,15 @@ return {
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup()
 
+      require('mini.move').setup()
+      -- mini.move usage:
+      -- Normal mode:
+      --   - Alt + h/j/k/l: Move current line left/down/up/right
+      -- Visual mode:
+      --   - Alt + h/j/k/l: Move selected lines left/down/up/right
+      -- Insert mode:
+      --   - Alt + h/j/k/l: Move current character left/down/up/right
+
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
       --  and try some other statusline plugin
