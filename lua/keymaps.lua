@@ -45,4 +45,25 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Yank file name
+vim.keymap.set('n', '<leader>yfn', function()
+  local filename = vim.fn.expand('%:t:r')
+  vim.fn.setreg('+', filename)
+  vim.notify('Yanked file name without extension: ' .. filename)
+end, { desc = 'Yank file name without extension' })
+
+-- Yank file name with extension
+vim.keymap.set('n', '<leader>yfe', function()
+  local filename = vim.fn.expand('%:t')
+  vim.fn.setreg('+', filename)
+  vim.notify('Yanked file name with extension: ' .. filename)
+end, { desc = 'Yank file name with extension' })
+
+-- Yank file relative path
+vim.keymap.set('n', '<leader>yfp', function()
+  local filepath = vim.fn.expand('%')
+  vim.fn.setreg('+', filepath)
+  vim.notify('Yanked file path: ' .. filepath)
+end, { desc = 'Yank file path' })
+
 -- vim: ts=2 sts=2 sw=2 et
