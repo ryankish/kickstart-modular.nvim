@@ -73,6 +73,7 @@ require('lazy').setup({
   -- require 'custom.plugins.hardtime',
   require 'custom.plugins.devicons',
   -- require 'custom.plugins.illuminate',
+  require 'custom.plugins.tmux-navigator',
 
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
