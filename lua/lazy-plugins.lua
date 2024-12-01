@@ -20,7 +20,6 @@ require('lazy').setup({
   -- Use `opts = {}` to force a plugin to be loaded.
   --
 
-
   -- modular approach: using `require 'path/name'` will
   -- include a plugin definition from file lua/path/name.lua
 
@@ -65,10 +64,15 @@ require('lazy').setup({
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   -- { import = 'custom.plugins' },
 
-
   -- Custom plugins
   require 'custom.plugins.kanagawa',
   require 'custom.plugins.neogit',
+  require 'custom.plugins.beacon',
+  require 'custom.plugins.colorizer',
+  require 'custom.plugins.flash',
+  -- require 'custom.plugins.hardtime',
+  require 'custom.plugins.devicons',
+  -- require 'custom.plugins.illuminate',
 
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
