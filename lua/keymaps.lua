@@ -78,4 +78,10 @@ end, { desc = 'Yank file path' })
 
 vim.keymap.set('n', '<leader>e', ':Neotree toggle<CR>', { desc = 'Toggle Neo-tree' })
 
+vim.keymap.set('n', '<leader>q', function()
+  local pdf_path = vim.fn.expand '%:p:r' .. '.pdf'
+  vim.notify('Opening PDF at: ' .. pdf_path) -- Notify instead of print
+  vim.cmd('silent !zathura ' .. pdf_path .. ' &')
+end, { silent = true })
+
 -- vim: ts=2 sts=2 sw=2 et
