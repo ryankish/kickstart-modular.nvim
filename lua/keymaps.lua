@@ -76,6 +76,13 @@ vim.keymap.set('n', '<leader>yfp', function()
   vim.notify('Yanked file path: ' .. filepath)
 end, { desc = 'Yank file path' })
 
+-- Yank file absolute path
+vim.keymap.set('n', '<leader>yfa', function()
+  local filepath = vim.fn.expand '%:p'
+  vim.fn.setreg('+', filepath)
+  vim.notify('Yanked absolute file path: ' .. filepath)
+end, { desc = 'Yank absolute file path' })
+
 vim.keymap.set('n', '<leader>e', ':Neotree toggle<CR>', { desc = 'Toggle Neo-tree' })
 
 vim.keymap.set('n', '<leader>q', function()
