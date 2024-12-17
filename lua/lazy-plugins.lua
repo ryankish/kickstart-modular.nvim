@@ -75,6 +75,7 @@ require('lazy').setup({
   -- require 'custom.plugins.illuminate',
   require 'custom.plugins.tmux-navigator',
   require 'custom.plugins.vimtex',
+  require 'custom.plugins.ispc',
 
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
