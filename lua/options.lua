@@ -65,4 +65,8 @@ vim.opt.scrolloff = 10
 vim.opt.spelllang = 'en_us'
 vim.opt.spell = true
 
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true -- spaces instead of tabs
+
 -- vim: ts=2 sts=2 sw=2 et
