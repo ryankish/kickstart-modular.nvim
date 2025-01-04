@@ -222,6 +222,8 @@ return {
         'clangd',
         'ts_ls', -- typescript_language_server
         'tailwindcss',
+        'pyright',
+        'ruff',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
