@@ -97,6 +97,9 @@ return {
         'delve',
       },
     }
+    -- Enable logging for debugging issues
+    vim.fn.setenv('NVIM_DAP_LOG_FILE', vim.fn.stdpath 'cache' .. '/dap.log')
+    require('dap').set_log_level 'TRACE'
 
     -- Dap UI setup
     -- For more information, see |:help nvim-dap-ui|
@@ -104,20 +107,20 @@ return {
       -- Set icons to characters that are more likely to work in every terminal.
       --    Feel free to remove or use ones that you like more! :)
       --    Don't feel like these are good choices.
-      icons = { expanded = '▾', collapsed = '▸', current_frame = '*' },
-      controls = {
-        icons = {
-          pause = '⏸',
-          play = '▶',
-          step_into = '⏎',
-          step_over = '⏭',
-          step_out = '⏮',
-          step_back = 'b',
-          run_last = '▶▶',
-          terminate = '⏹',
-          disconnect = '⏏',
-        },
-      },
+      -- icons = { expanded = '▾', collapsed = '▸', current_frame = '*' },
+      -- controls = {
+      --   icons = {
+      --     pause = '⏸',
+      --     play = '▶',
+      --     step_into = '⏎',
+      --     step_over = '⏭',
+      --     step_out = '⏮',
+      --     step_back = 'b',
+      --     run_last = '▶▶',
+      --     terminate = '⏹',
+      --     disconnect = '⏏',
+      --   },
+      -- },
     }
 
     -- Change breakpoint icons
@@ -144,5 +147,14 @@ return {
         detached = vim.fn.has 'win32' == 0,
       },
     }
+    -- dap.adapters.lldb = {
+    --   type = 'executable',
+    --   command = '/usr/bin/lldb-vscode', -- Adjust this path based on your system
+    --   name = 'lldb',
+    -- }
+
+    require('dap.ext.vscode').load_launchjs(nil, {
+      lldb = { 'c', 'cpp', 'rust' },
+    })
   end,
 }

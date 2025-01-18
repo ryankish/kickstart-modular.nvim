@@ -220,6 +220,7 @@ return {
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
         'clangd',
+        'codelldb',
         'ts_ls', -- typescript_language_server
         'tailwindcss',
         'pyright',
