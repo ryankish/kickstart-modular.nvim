@@ -70,7 +70,7 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true -- spaces instead of tabs
 
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'c', 'cpp' },
+  pattern = { 'c', 'cpp', 'cuda' },
   callback = function()
     vim.bo.commentstring = '// %s'
   end,
