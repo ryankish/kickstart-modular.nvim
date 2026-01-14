@@ -209,24 +209,23 @@ return {
       -- Mason setup (LSPs are installed via nix, so ensure_installed is empty)
       require('mason').setup()
       require('mason-tool-installer').setup { ensure_installed = {} }
+      require('mason-lspconfig').setup { automatic_installation = false }
 
-      require('mason-lspconfig').setup {
-        automatic_installation = false,
-        handlers = {
-          function(server_name)
-            local server = servers[server_name] or {}
-            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            require('lspconfig')[server_name].setup(server)
-          end,
-        },
-      }
+      -- Set up LSPs using new vim.lsp.config API (nvim 0.11+)
+      for server_name, server in pairs(servers) do
+        server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+        vim.lsp.config(server_name, server)
+      end
 
       -- Set up additional LSPs installed via nix
-      local lspconfig = require('lspconfig')
-      lspconfig.clangd.setup { capabilities = capabilities }
-      lspconfig.pyright.setup { capabilities = capabilities }
-      lspconfig.ruff.setup { capabilities = capabilities }
-      lspconfig.tailwindcss.setup { capabilities = capabilities }
+      local nix_servers = { 'clangd', 'pyright', 'ruff', 'tailwindcss' }
+      for _, server_name in ipairs(nix_servers) do
+        vim.lsp.config(server_name, { capabilities = capabilities })
+      end
+
+      -- Enable all configured servers
+      vim.lsp.enable(vim.tbl_keys(servers))
+      vim.lsp.enable(nix_servers)
     end,
   },
 }
