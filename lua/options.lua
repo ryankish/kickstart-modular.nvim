@@ -23,6 +23,42 @@ vim.schedule(function()
   vim.opt.clipboard = 'unnamedplus'
 end)
 
+-- Allow project-local `.nvim.lua` files.
+vim.opt.exrc = true
+
+do
+  local dir = vim.fn.getcwd()
+
+  while dir and dir ~= '' do
+    local config = dir .. '/.nvim.lua'
+    local contents = vim.secure.read(config)
+
+    if type(contents) == 'string' then
+      local chunk, err = load(contents, '@' .. config)
+
+      if chunk then
+        local ok, result = pcall(chunk)
+
+        if not ok then
+          vim.notify(result, vim.log.levels.ERROR)
+        end
+      else
+        vim.notify(err, vim.log.levels.ERROR)
+      end
+
+      break
+    end
+
+    local parent = vim.fn.fnamemodify(dir, ':h')
+
+    if parent == dir then
+      break
+    end
+
+    dir = parent
+  end
+end
+
 -- Enable break indent
 vim.opt.breakindent = true
 
